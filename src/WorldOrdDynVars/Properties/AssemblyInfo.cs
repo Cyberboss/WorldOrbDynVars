@@ -6,6 +6,5 @@
 [assembly: AssemblyCompany("Dominion")]
 [assembly: AssemblyCopyright("Copyright © Dominion 2026")]
 
-// UPDATE VERSIONS HERE, IN WorldOrbDynVars.cs, AND GITHUB ACTIONS. DON'T FORGET RELEASE NOTES!
-[assembly: AssemblyVersion("1.0.0")]
-[assembly: AssemblyFileVersion("1.0.0")]
+[assembly: AssemblyVersion(WorldOrbDynVars.WorldOrbDynVars.VersionConstant)]
+[assembly: AssemblyFileVersion(WorldOrbDynVars.WorldOrbDynVars.VersionConstant)]

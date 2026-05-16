@@ -16,3 +16,7 @@ Use this to access `WorldOrb` data until https://github.com/Yellow-Dog-Man/Reson
 1. Install [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader).
 1. Place [WorldOrbDynVars.dll](https://github.com/Cyberboss/WorldOrbDynVars/releases/latest/download/WorldOrbDynVars.dll) into your `rml_mods` folder. This folder should be at `C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods` for a default install. You can create it if it's missing, or if you launch the game once with ResoniteModLoader installed it will create this folder for you.
 1. Start the game. If you want to verify that the mod is working you can check your Resonite logs.
+
+# Licensing
+
+This mod's source code is licensed under MIT, however the binaries referenced during the build process under the `/Resonite` tree are not included in this license. Resonite is freely available to download and play on [Steam](https://store.steampowered.com/app/2519830/Resonite/).
