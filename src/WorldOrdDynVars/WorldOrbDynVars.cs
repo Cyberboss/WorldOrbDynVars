@@ -12,7 +12,7 @@ namespace WorldOrbDynVars
 	public sealed class WorldOrbDynVars : ResoniteMod
 	{
 		// UPDATE VERSIONS HERE AND IN GITHUB ACTIONS. DON'T FORGET RELEASE NOTES!
-		internal const string VersionConstant = "1.0.0";
+		internal const string VersionConstant = "1.0.2";
 
 		public override string Name => "WorldOrbDynVars";
 

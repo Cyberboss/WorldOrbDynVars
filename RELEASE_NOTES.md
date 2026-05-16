@@ -1,3 +1,7 @@
+# v1.0.2
+
+- Build against reference assemblies. (@Cyberboss)
+
 # v1.0.1
 
 - Fixed `NullReferenceException` due to `null` locale `messages`. (@Cyberboss)
