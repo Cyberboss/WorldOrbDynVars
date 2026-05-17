@@ -66,4 +66,4 @@ jobs:
               ./publish/WorldOrbDynVars.dll
             body_path: RELEASE_NOTES.md
             target_commitish: ${{ github.event.head_commit.id }}
-            make_latest: false
+            make_latest: true
