@@ -12,5 +12,5 @@
     <File Path="README.md" />
     <File Path="RELEASE_NOTES.md" />
   </Folder>
-  <Project Path="src/WorldOrdDynVars/WorldOrbDynVars.csproj" />
+  <Project Path="src/WorldOrbDynVars/WorldOrbDynVars.csproj" />
 </Solution>
