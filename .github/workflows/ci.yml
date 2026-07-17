@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: Setup dotnet
-          uses: actions/setup-dotnet@v5
+          uses: actions/setup-dotnet@v6
           with:
               dotnet-version: '10.0.x'
 
@@ -44,7 +44,7 @@ jobs:
       contents: write
     steps:
         - name: Setup dotnet
-          uses: actions/setup-dotnet@v5
+          uses: actions/setup-dotnet@v6
           with:
               dotnet-version: '10.0.x'
 
