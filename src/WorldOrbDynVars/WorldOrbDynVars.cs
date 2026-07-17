@@ -40,7 +40,6 @@ namespace WorldOrbDynVars
 		{
 			public static void Postfix(WorldOrb __instance)
 			{
-				SessionJoinParameters asdf = null;
 				Slot? slot = null;
 				try
 				{
