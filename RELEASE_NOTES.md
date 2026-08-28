@@ -1,3 +1,11 @@
+# v1.1.1
+
+- Update latest reference assemblies to fix errors. (@Cyberboss)
+
+# v1.1.0
+
+- Added `SessionUrlsReference` variable to the `SyncFieldList<Uri>` for `ActiveSessionURLs`. (@Cyberboss)
+
 # v1.0.2
 
 - Build against reference assemblies. (@Cyberboss)
