@@ -51,7 +51,7 @@ namespace WorldOrbDynVars
 					Debug($"Locally attached {nameof(WorldOrb)} component. Ref: {componentRef}");
 					if (!Enabled.Value)
 					{
-						Debug($"Mod is disabled, ignoring...");
+						Debug("Mod is disabled, ignoring...");
 						return;
 					}
 
