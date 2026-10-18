@@ -15,7 +15,7 @@ namespace WorldOrbDynVars
 
 		internal const string Description = "A resonite mod to attach a personal \"DynamicVariableSpace\" to a child slot of \"WorldOrb\" components that relay info for them.";
 
-		internal const string VersionConstant = "2.0.0";
+		internal const string VersionConstant = "2.0.1";
 
 		const string DynamicVariableSpaceName = "WorldOrbDynVars";
 
@@ -37,24 +37,6 @@ namespace WorldOrbDynVars
 			Debug("Running harmony patches");
 			Harmony harmony = new($"net.dextraspace.{NameConstant}");
 			harmony.PatchAll();
-		}
-
-		[HarmonyPatch(typeof(UserRoot), "OnStart")]
-		class UserRoot_OnStart_Patch
-		{
-			public static void Postfix(UserRoot __instance)
-			{
-				if (!Enabled.Value)
-					return;
-
-				var instanceSlot = __instance.Slot;
-				if (instanceSlot.ActiveUserRoot != __instance)
-					return;
-
-				var dynVarSpace = instanceSlot.AttachComponent<DynamicVariableSpace>();
-				dynVarSpace.SpaceName.Value = DynamicVariableSpaceName;
-				dynVarSpace.OnlyDirectBinding.Value = true;
-			}
 		}
 
 		[HarmonyPatch(typeof(WorldOrb), "OnStart")]
