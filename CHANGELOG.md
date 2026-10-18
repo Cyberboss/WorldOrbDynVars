@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 
 ### Fixed
 
-- Fixed `DynamicVariableSpace` also being created next to all `UserRoot` components. (@Cyberboss)
+- Fixed `DynamicVariableSpace` also being created next to your `UserRoot` components. (@Cyberboss)
 
 ## [2.0.0] - 2026-10-18
 
