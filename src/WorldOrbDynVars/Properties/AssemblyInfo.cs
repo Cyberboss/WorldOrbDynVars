@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 
-[assembly: AssemblyTitle("WorldOrbDynVars")]
-[assembly: AssemblyProduct("WorldOrbDynVars")]
-[assembly: AssemblyDescription("A resonite mod to attach a DynamicVariableSpace to a child slot of WorldOrb components that relay info for them.")]
+[assembly: AssemblyTitle(WorldOrbDynVars.WorldOrbDynVars.NameConstant)]
+[assembly: AssemblyProduct(WorldOrbDynVars.WorldOrbDynVars.NameConstant)]
+[assembly: AssemblyDescription(WorldOrbDynVars.WorldOrbDynVars.Description)]
 [assembly: AssemblyCompany("Dominion")]
 [assembly: AssemblyCopyright("Copyright © Dominion 2026")]
 

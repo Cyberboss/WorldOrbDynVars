@@ -1,8 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TargetFramework>net10.0</TargetFramework>
-    <LangVersion>14.0</LangVersion>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CopyToMods Condition="'$(CopyToMods)' == '' AND '$(Configuration)' == 'Debug'">true</CopyToMods>
@@ -19,12 +18,12 @@
     <PackageReference Include="ResoniteModLoader" Version="5.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Locale\*.json" />
-  </ItemGroup>
-
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(CopyToMods)'=='true'">
     <Message Text="Attempting to copy $(TargetFileName) to $(ResonitePath)rml_mods" Importance="high" />
     <Copy SourceFiles="$(TargetDir)$(TargetFileName)" DestinationFolder="$(ResonitePath)rml_mods" ContinueOnError="true" />
   </Target>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Locale\*.json" />
+  </ItemGroup>
 </Project>

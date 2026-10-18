@@ -12,25 +12,21 @@ concurrency:
   group: "build-${{ github.head_ref || github.run_id }}-${{ github.event_name }}"
   cancel-in-progress: true
 
-# UPDATE VERSIONS HERE AND IN WorldOrbDynVars.cs. DON'T FORGET RELEASE NOTES!
-env:
-  WORLDORBDYNVARS_VERSION: '1.1.1'
-
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-        - name: Setup dotnet
-          uses: actions/setup-dotnet@v6
-          with:
-              dotnet-version: '10.0.x'
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v6
+        with:
+            dotnet-version: '10.0.x'
 
-        - name: Checkout
-          uses: actions/checkout@v7
+      - name: Checkout
+        uses: actions/checkout@v7
 
-        - name: Build
-          run: dotnet build -c Release
+      - name: Build
+        run: dotnet build -c Release
 
   deploy:
     name: Deploy
@@ -43,30 +39,55 @@ jobs:
       artifact-metadata: write
       contents: write
     steps:
-        - name: Setup dotnet
-          uses: actions/setup-dotnet@v6
-          with:
-              dotnet-version: '10.0.x'
+      - name: Install native depedencies
+        run: sudo apt-get install -y libimage-exiftool-perl
 
-        - name: Checkout
-          uses: actions/checkout@v7
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v6
+        with:
+            dotnet-version: '10.0.x'
 
-        - name: Publish
-          run: dotnet publish -o publish /nowarn:NETSDK1194
+      - name: Checkout
+        uses: actions/checkout@v7
 
-        - name: Attest
-          uses: actions/attest@v4.2.2
-          with:
-            subject-path: 'publish/WorldOrbDynVars.dll'
+      - name: Publish
+        run: dotnet publish -o publish /nowarn:NETSDK1194
 
-        - name: Create GitHub Release
-          uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64
-          with:
-            token: ${{ secrets.GITHUB_TOKEN }}
-            tag_name: v${{ env.WORLDORBDYNVARS_VERSION }}
-            name: WorldOrbDynVars v${{ env.WORLDORBDYNVARS_VERSION }}
-            files: |
-              ./publish/WorldOrbDynVars.dll
-            body_path: RELEASE_NOTES.md
-            target_commitish: ${{ github.event.head_commit.id }}
-            make_latest: true
+      - name: Get Project File Name
+        id: find_file
+        shell: bash
+        run: |
+          FILE_PATH=$(find . -maxdepth 3 -name "*.csproj" -print -quit)
+          FILE_NAME=$(basename "$FILE_PATH")
+          FILE_NAME_NO_EXT="${FILE_NAME%.*}"
+
+          echo "Found project name: $FILE_NAME_NO_EXT"
+
+          echo "filename=$FILE_NAME_NO_EXT" >> "$GITHUB_OUTPUT"
+
+      - name: Extract SemVer from Output
+        id: get_version
+        shell: bash
+        run: |
+          SEMVER=$(exiftool -s -s -s -AssemblyVersion ./publish/${{ steps.find_file.outputs.filename }}.dll | cut -d'.' -f1-3)
+
+          echo "Extracted SemVer: $SEMVER"
+
+          echo "version=$SEMVER" >> "$GITHUB_OUTPUT"
+
+      - name: Attest
+        uses: actions/attest@v4.2.2
+        with:
+          subject-path: 'publish/${{ steps.find_file.outputs.filename }}.dll'
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: v${{  steps.get_version.outputs.version }}
+          name: ${{ steps.find_file.outputs.filename }} v${{  steps.get_version.outputs.version }}
+          files: |
+            ./publish/${{ steps.find_file.outputs.filename }}.dll
+          body_path: CHANGELOG.md
+          target_commitish: ${{ github.event.head_commit.id }}
+          make_latest: true
