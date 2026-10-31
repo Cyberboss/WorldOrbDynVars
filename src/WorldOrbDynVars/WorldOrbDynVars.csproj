@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Resonite.GameLibs" Version="2026.10.29.1239" />
-    <PackageReference Include="ResoniteModLoader" Version="5.0.1" />
+    <PackageReference Include="ResoniteModLoader" Version="5.0.2" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(CopyToMods)'=='true'">
