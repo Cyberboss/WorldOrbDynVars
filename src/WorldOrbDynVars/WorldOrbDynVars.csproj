@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Resonite.GameLibs" Version="2026.10.29.1239" />
+    <PackageReference Include="Resonite.GameLibs" Version="2026.11.5.80" />
     <PackageReference Include="ResoniteModLoader" Version="5.0.2" />
   </ItemGroup>
 
