@@ -81,7 +81,7 @@ jobs:
           subject-path: 'publish/${{ steps.find_file.outputs.filename }}.dll'
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64
+        uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: v${{  steps.get_version.outputs.version }}
